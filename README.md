@@ -22,4 +22,18 @@ If you want to explore the code on your local machine, follow these steps:
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/anjhonhulguin02-blip/portfolio.git](https://github.com/anjhonhulguin02-blip/portfolio.git)
+   git clone https://github.com/anjhonhulguin02-blip/portfolio.git
+   cd portfolio/my-portfolio
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Run the dev server:**
+   ```bash
+   npm run dev
+   ```
+
+   Open the URL Vite prints in the terminal (usually `http://localhost:5173`).
