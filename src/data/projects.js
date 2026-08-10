@@ -72,7 +72,7 @@ export const projects = [
       "A full-stack e-commerce marketplace with buyer, seller, and admin roles, supporting product discovery, multi-seller checkout, buyer-seller chat, and coupon-based discounts.",
     stack: ["Next.js", "React", "TypeScript", "MongoDB", "NextAuth.js", "Cloudinary", "Tailwind CSS"],
     githubUrl: "https://github.com/anjhonhulguin02-blip/norzamart",
-    liveUrl: null,
+    liveUrl: "https://norzamart.vercel.app",
     caseStudy: {
       overview:
         "NorzaMart is a multi-role e-commerce marketplace built with the Next.js App Router and MongoDB — buyers shop and message sellers, sellers manage their own product catalog and orders, and admins moderate sellers, products, coupons, and payouts.",
