@@ -59,6 +59,24 @@ export default function Hero() {
             </svg>
           </a>
         </div>
+
+        <dl className="pt-6 flex flex-wrap gap-x-10 gap-y-4 border-t border-white/10 mt-2">
+          <div>
+            <dt className="sr-only">Full-stack projects deployed</dt>
+            <dd className="font-display text-3xl font-bold text-white">3</dd>
+            <p className="text-xs uppercase tracking-wider text-slate-400">Projects Deployed</p>
+          </div>
+          <div>
+            <dt className="sr-only">Core technologies</dt>
+            <dd className="font-display text-3xl font-bold text-white">6</dd>
+            <p className="text-xs uppercase tracking-wider text-slate-400">Core Technologies</p>
+          </div>
+          <div>
+            <dt className="sr-only">Solo-built projects</dt>
+            <dd className="font-display text-3xl font-bold text-white">100%</dd>
+            <p className="text-xs uppercase tracking-wider text-slate-400">Solo-Built</p>
+          </div>
+        </dl>
       </div>
 
       <div className="flex-1 flex justify-center items-center relative z-10 mt-10 md:mt-0">
