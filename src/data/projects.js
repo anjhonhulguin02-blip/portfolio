@@ -135,7 +135,7 @@ export const projects = [
       "A Laravel-based full-stack application for managing student scholarship applications, organization review workflows, and fund disbursement tracking.",
     stack: ["Laravel", "PHP", "MySQL", "Composer", "NPM"],
     githubUrl: "https://github.com/MakMoinee/scholarshipDistributionWebApp",
-    liveUrl: null,
+    liveUrl: "https://scholarship-app-production.up.railway.app",
     caseStudy: {
       overview:
         "A two-role Laravel application where students apply for scholarships and organizations review applications, approve them, and track fund disbursement — including an experimental Ethereum-based transaction ledger for recording disbursements.",
