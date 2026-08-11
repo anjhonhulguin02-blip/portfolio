@@ -1,5 +1,5 @@
 import motorentPreview from '../assets/motorent-preview.jpg';
-import norzamartPreview from '../assets/norzamart-preview.png';
+import norzamartPreview from '../assets/norzamart-preview.jpg';
 import scholarshipPreview from '../assets/scholarship-preview.jpg';
 
 export const projects = [
@@ -8,7 +8,7 @@ export const projects = [
     title: "MotoRent",
     subtitle: "Motorcycle Rental & Booking Web Application",
     image: motorentPreview,
-    status: null,
+    status: "Live",
     description:
       "A responsive full-stack motorcycle rental platform supporting vehicle discovery, online booking, Supabase authentication, and database-driven downpayment and balance tracking.",
     stack: ["React.js", "Supabase", "PostgreSQL", "Row-Level Security", "Vercel"],
@@ -130,21 +130,21 @@ export const projects = [
     title: "Scholarship Distribution System",
     subtitle: "Scholarship Application & Fund Distribution System",
     image: scholarshipPreview,
-    status: null,
+    status: "Academic Demo",
     description:
-      "A Laravel-based full-stack application for managing student scholarship applications, organization review workflows, and fund disbursement tracking.",
+      "A Laravel-based full-stack application, built as a university capstone project, for managing student scholarship applications, organization review workflows, and fund disbursement tracking.",
     stack: ["Laravel", "PHP", "MySQL", "Composer", "NPM"],
     githubUrl: "https://github.com/MakMoinee/scholarshipDistributionWebApp",
     liveUrl: "https://scholarship-app-production.up.railway.app",
     caseStudy: {
       overview:
-        "A two-role Laravel application where students apply for scholarships and organizations review applications, approve them, and track fund disbursement — including an experimental Ethereum-based transaction ledger for recording disbursements.",
+        "A two-role Laravel application where students apply for scholarships and organizations review applications, approve them, and track fund disbursement — including an experimental Ethereum-based transaction ledger for recording disbursements. Built collaboratively as a university capstone project.",
       problem:
         "Scholarship applications and fund releases are often tracked manually, making it hard for either students or the awarding organization to see application status or disbursement history in one place.",
       solution:
-        "I built a Laravel app with separate student and organization portals: students submit applications with required document uploads, organizations review and approve them, and approved awards are tracked through a transaction/disbursement module.",
+        "Our team built a Laravel app with separate student and organization portals: students submit applications with required document uploads, organizations review and approve them, and approved awards are tracked through a transaction/disbursement module.",
       role:
-        "Solo developer — configured the Laravel application, built the student and organization modules, and handled local environment/deployment setup.",
+        "Collaborative capstone project (university group project, not solo). My specific contribution: local environment configuration (PHP/php.ini extensions), Composer/NPM dependency management, local deployment/testing setup, and the production deployment to Railway with a managed MySQL database. Application features and modules (student/org portals, review workflow, disbursement logic) were built together with my capstone groupmates.",
       techStack: ["Laravel 10", "PHP", "MySQL", "Composer", "NPM"],
       architecture: [
         "Student / Organization Browser",

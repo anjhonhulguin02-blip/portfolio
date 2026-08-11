@@ -8,8 +8,8 @@ const focusAreas = [
     description: 'Diagnosing application, environment, deployment, database, hardware, and network issues.',
   },
   {
-    title: 'AI-Augmented Engineering',
-    description: 'Using AI development tools to accelerate software work while reviewing and validating technical output.',
+    title: 'Database & Security Design',
+    description: 'Designing relational and document schemas, and enforcing access control through Row-Level Security, JWT sessions, and input validation.',
   },
 ];
 

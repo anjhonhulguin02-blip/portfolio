@@ -35,13 +35,15 @@ export default function ProjectCard({ project }) {
   const cs = project.caseStudy;
 
   return (
-    <div className="glass-card rounded-2xl flex flex-col min-w-0 overflow-hidden hover:border-purple-500/30 transition-all duration-300">
+    <div className="glass-card rounded-2xl flex flex-col min-w-0 h-full overflow-hidden hover:border-purple-500/30 transition-all duration-300">
       {project.image && (
         <img
           src={project.image}
           alt={`${project.title} screenshot`}
           loading="lazy"
-          className="w-full h-44 object-cover object-top border-b border-white/5"
+          width="640"
+          height="360"
+          className="w-full h-44 object-cover object-top border-b border-white/5 shrink-0"
         />
       )}
       <div className="p-6 flex flex-col flex-1">
@@ -68,7 +70,7 @@ export default function ProjectCard({ project }) {
         </div>
       </div>
 
-      <div className="pt-6 border-t border-white/5 mt-6 space-y-4">
+      <div className="pt-6 border-t border-white/5 mt-auto space-y-4">
         <div className="flex flex-wrap items-center gap-3">
           {project.githubUrl && (
             <a

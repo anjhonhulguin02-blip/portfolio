@@ -17,11 +17,11 @@ const skillCategories = [
   },
   {
     name: 'Development & Deployment',
-    skills: ['Git', 'GitHub', 'Vercel', 'Composer', 'NPM', 'Cloudinary'],
+    skills: ['Git', 'GitHub', 'Vercel', 'Railway', 'Composer', 'NPM', 'Cloudinary'],
   },
   {
-    name: 'AI-Assisted Development',
-    skills: ['ChatGPT', 'Claude'],
+    name: 'Testing, Debugging & Accessibility',
+    skills: ['Manual & Exploratory Testing', 'Browser DevTools Debugging', 'Cross-Browser Testing', 'Semantic HTML & ARIA', 'Keyboard Navigation'],
   },
   {
     name: 'Systems / IT Support',

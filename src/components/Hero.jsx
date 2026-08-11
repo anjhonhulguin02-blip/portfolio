@@ -1,4 +1,6 @@
 import profilePic from '../assets/profile.jpg';
+import profilePicWebp from '../assets/profile.webp';
+import profilePicAvif from '../assets/profile.avif';
 
 export default function Hero() {
   return (
@@ -28,13 +30,12 @@ export default function Hero() {
             href="/Anjhon_Hulguin_CV.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            download="Anjhon_Hulguin_CV.pdf"
             className="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/15 hover:border-white/30 text-white px-6 py-3 rounded-full font-medium transition-all"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
             </svg>
-            Download Resume
+            View Resume
           </a>
           <a
             href="https://github.com/anjhonhulguin02-blip"
@@ -72,9 +73,9 @@ export default function Hero() {
             <p className="text-xs uppercase tracking-wider text-slate-400">Core Technologies</p>
           </div>
           <div>
-            <dt className="sr-only">Solo-built projects</dt>
-            <dd className="font-display text-3xl font-bold text-white">100%</dd>
-            <p className="text-xs uppercase tracking-wider text-slate-400">Solo-Built</p>
+            <dt className="sr-only">Blockchain integration</dt>
+            <dd className="font-display text-3xl font-bold text-white">1</dd>
+            <p className="text-xs uppercase tracking-wider text-slate-400">Blockchain Integration</p>
           </div>
         </dl>
       </div>
@@ -85,7 +86,20 @@ export default function Hero() {
 
           <div className="relative w-full h-full rounded-full p-2 bg-gradient-to-tr from-purple-500/30 to-pink-500/30 border border-white/10 overflow-hidden backdrop-blur-sm group">
             <div className="w-full h-full rounded-full overflow-hidden bg-slate-800 border-4 border-brand-dark">
-              <img src={profilePic} alt="Portrait of Anjhon Hulguin" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+              <picture>
+                <source srcSet={profilePicAvif} type="image/avif" />
+                <source srcSet={profilePicWebp} type="image/webp" />
+                <img
+                  src={profilePic}
+                  alt="Portrait of Anjhon Hulguin"
+                  width="1440"
+                  height="1799"
+                  fetchPriority="high"
+                  loading="eager"
+                  decoding="async"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </picture>
             </div>
           </div>
 

@@ -8,10 +8,10 @@ export default function Projects() {
         Featured <span className="text-purple-500">Projects</span>
       </h2>
       <p className="text-center text-slate-400 text-sm max-w-xl mx-auto mb-12">
-        Full-stack applications I've designed, built, and deployed end to end.
+        Full-stack applications I've built, contributed to, and deployed end to end.
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
         {projects.map((project) => (
           <ProjectCard key={project.id} project={project} />
         ))}

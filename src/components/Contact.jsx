@@ -75,7 +75,7 @@ export default function Contact() {
                 </div>
                 <div className="min-w-0">
                   <span className="block text-xs uppercase text-slate-500 font-bold tracking-wider">{item.label}</span>
-                  <span className="text-sm font-medium text-slate-200 block truncate">{item.value}</span>
+                  <span className="text-sm font-medium text-slate-200 block break-words">{item.value}</span>
                 </div>
               </>
             );
@@ -106,13 +106,12 @@ export default function Contact() {
           href="/Anjhon_Hulguin_CV.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          download="Anjhon_Hulguin_CV.pdf"
           className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white px-8 py-3 rounded-full font-medium transition-all hover:scale-105 shadow-[0_0_20px_rgba(168,85,247,0.4)]"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
           </svg>
-          Download Resume
+          View Resume
         </a>
       </div>
     </section>

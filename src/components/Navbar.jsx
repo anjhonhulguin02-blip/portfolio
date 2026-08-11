@@ -5,7 +5,7 @@ const links = [
   { href: '#skills', label: 'Skills' },
   { href: '#experience', label: 'Experience' },
   { href: '#about', label: 'About' },
-  { href: '/Anjhon_Hulguin_CV.pdf', label: 'Resume', download: true },
+  { href: '/Anjhon_Hulguin_CV.pdf', label: 'Resume', newTab: true },
   { href: '#contact', label: 'Contact' },
 ];
 
@@ -32,7 +32,7 @@ export default function Navbar() {
             <li key={link.label}>
               <a
                 href={link.href}
-                {...(link.download ? { download: 'Anjhon_Hulguin_CV.pdf', target: '_blank', rel: 'noopener noreferrer' } : {})}
+                {...(link.newTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                 className="hover:text-purple-500 transition-colors focus-visible:outline-2 focus-visible:outline-purple-500 focus-visible:outline-offset-4 rounded-sm"
               >
                 {link.label}
@@ -68,7 +68,7 @@ export default function Navbar() {
             <li key={link.label}>
               <a
                 href={link.href}
-                {...(link.download ? { download: 'Anjhon_Hulguin_CV.pdf', target: '_blank', rel: 'noopener noreferrer' } : {})}
+                {...(link.newTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                 onClick={() => setOpen(false)}
                 className="block py-3 hover:text-purple-500 transition-colors focus-visible:outline-2 focus-visible:outline-purple-500 focus-visible:outline-offset-4 rounded-sm"
               >
