@@ -1,16 +1,49 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { projects } from '../data/projects';
 import ProjectCard from './ProjectCard';
 import CaseStudyPanel from './CaseStudyPanel';
 
+function getColumnCount() {
+  if (typeof window === 'undefined') return 1;
+  if (window.matchMedia('(min-width: 1024px)').matches) return 3;
+  if (window.matchMedia('(min-width: 768px)').matches) return 2;
+  return 1;
+}
+
+function useColumnCount() {
+  const [columns, setColumns] = useState(getColumnCount);
+
+  useEffect(() => {
+    const mqLg = window.matchMedia('(min-width: 1024px)');
+    const mqMd = window.matchMedia('(min-width: 768px)');
+    function update() {
+      setColumns(getColumnCount());
+    }
+    mqLg.addEventListener('change', update);
+    mqMd.addEventListener('change', update);
+    return () => {
+      mqLg.removeEventListener('change', update);
+      mqMd.removeEventListener('change', update);
+    };
+  }, []);
+
+  return columns;
+}
+
 export default function Projects() {
   const [openProjectId, setOpenProjectId] = useState(null);
+  const columns = useColumnCount();
 
   function handleToggleCaseStudy(id) {
     setOpenProjectId((current) => (current === id ? null : id));
   }
 
   const openProject = projects.find((p) => p.id === openProjectId) ?? null;
+
+  const rows = [];
+  for (let i = 0; i < projects.length; i += columns) {
+    rows.push(projects.slice(i, i + columns));
+  }
 
   return (
     <section id="projects" className="py-16 scroll-mt-20">
@@ -21,20 +54,32 @@ export default function Projects() {
         Full-stack applications I've built, contributed to, and deployed end to end.
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-        {projects.map((project) => (
-          <ProjectCard
-            key={project.id}
-            project={project}
-            isOpen={openProjectId === project.id}
-            onToggleCaseStudy={handleToggleCaseStudy}
-          />
-        ))}
-      </div>
+      <div className="space-y-8">
+        {rows.map((row, rowIndex) => {
+          const rowHasOpenProject = row.some((project) => project.id === openProjectId);
+          return (
+            <div key={rowIndex}>
+              <div
+                className="grid gap-8 items-stretch"
+                style={{ gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))` }}
+              >
+                {row.map((project) => (
+                  <ProjectCard
+                    key={project.id}
+                    project={project}
+                    isOpen={openProjectId === project.id}
+                    onToggleCaseStudy={handleToggleCaseStudy}
+                  />
+                ))}
+              </div>
 
-      {openProject && (
-        <CaseStudyPanel project={openProject} onClose={() => setOpenProjectId(null)} />
-      )}
+              {rowHasOpenProject && openProject && (
+                <CaseStudyPanel project={openProject} onClose={() => setOpenProjectId(null)} />
+              )}
+            </div>
+          );
+        })}
+      </div>
     </section>
   );
 }
