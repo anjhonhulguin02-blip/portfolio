@@ -35,7 +35,7 @@ export default function ProjectCard({ project }) {
   const cs = project.caseStudy;
 
   return (
-    <div className="glass-card rounded-2xl flex flex-col min-w-0 min-h-[700px] overflow-hidden hover:border-purple-500/30 transition-all duration-300">
+    <div className={`glass-card rounded-2xl flex flex-col min-w-0 min-h-[700px] overflow-hidden hover:border-purple-500/30 transition-all duration-300 ${open ? 'md:col-span-2 lg:col-span-3' : ''}`}>
       {project.image && (
         <img
           src={project.image}
