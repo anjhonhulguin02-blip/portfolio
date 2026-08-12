@@ -11,7 +11,7 @@ export default function Projects() {
         Full-stack applications I've built, contributed to, and deployed end to end.
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
         {projects.map((project) => (
           <ProjectCard key={project.id} project={project} />
         ))}
