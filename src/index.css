@@ -1,63 +1,175 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-brand-dark: #0b0b14;
-  --color-brand-purple: #a855f7;
-  --color-brand-pink: #ec4899;
-  --font-sans: "Inter", sans-serif;
-  --font-display: "Space Grotesk", sans-serif;
+  /* Surfaces — dark violet */
+  --color-page: #08080f;
+  --color-shell: #0d0d16;
+  --color-surface: #14141f;
+  --color-surface-soft: #1c1c2a;
+
+  /* Ink */
+  --color-ink: #f4f4f7;
+  --color-ink-soft: #a3a3b8;
+  --color-ink-faint: #8b8ba5;
+
+  /* Accent — swap these to re-brand the whole site */
+  --color-accent: #a855f7;
+  --color-accent-ink: #c99bff;
+  --color-accent-soft: #241633;
+
+  /* Lines */
+  --color-line: #26263a;
+
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
-html {
-  scroll-behavior: smooth;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--color-page);
+  }
+
+  body {
+    background-color: var(--color-page);
+    color: var(--color-ink);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  :where(a, button, [tabindex]):focus-visible {
+    outline: 2px solid var(--color-accent-ink);
+    outline-offset: 3px;
+    border-radius: 0.5rem;
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: #fff;
+  }
 }
 
-body {
-  background-color: var(--color-brand-dark);
-  color: #e2e8f0;
-  overflow-x: hidden;
-  position: relative;
+/* Component classes live in the components layer so Tailwind utilities
+   (e.g. md:hidden) can still override them. */
+@layer components {
+
+/* ---- Surfaces ---------------------------------------------------------- */
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 1.5rem;
 }
 
-/* Grid Lines Background */
-.bg-pattern {
-  background-image: 
-      linear-gradient(to right, rgba(168, 85, 247, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(168, 85, 247, 0.05) 1px, transparent 1px);
-  background-size: 50px 50px;
+.card-soft {
+  background: var(--color-surface-soft);
+  border: 1px solid var(--color-line);
+  border-radius: 1.5rem;
 }
 
-/* Glassmorphism Cards */
-.glass-card {
-  background: rgba(17, 17, 27, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+/* Kept dark enough that white text clears WCAG AA across the whole ramp. */
+.card-accent {
+  background: linear-gradient(135deg, #6d28d9, #7c3aed 55%, #9333ea);
+  border-radius: 1.5rem;
+  color: #fff;
 }
 
-/* Floating Animations for Tech Badges */
-.floating-badge {
-  position: absolute;
-  display: flex;
+/* The floating shell that holds the whole page */
+.shell {
+  background: var(--color-shell);
+  border: 1px solid var(--color-line);
+  border-radius: 2rem;
+}
+
+/* ---- Typography -------------------------------------------------------- */
+
+.display {
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+}
+
+.eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+}
+
+/* ---- Controls ---------------------------------------------------------- */
+
+.pill {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  z-index: 20;
-  animation: float-icon 4s ease-in-out infinite;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0 1.25rem;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
-@keyframes float-icon {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
-  100% { transform: translateY(0px); }
+.pill-primary {
+  background: var(--color-ink);
+  color: #0b0b14;
+}
+.pill-primary:hover {
+  background: #ffffff;
 }
 
-::selection {
-  background-color: #ec4899;
-  color: white;
+.pill-ghost {
+  background: transparent;
+  color: var(--color-ink);
+  border: 1px solid var(--color-line);
+}
+.pill-ghost:hover {
+  background: var(--color-surface-soft);
+  border-color: #3a3a52;
+}
+
+.pill-accent {
+  background: var(--color-accent);
+  color: #fff;
+}
+.pill-accent:hover {
+  background: #9333ea;
+}
+
+/* Small non-interactive label pill */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.3125rem 0.6875rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: var(--color-surface-soft);
+  color: var(--color-ink-soft);
+}
+
+.tag-accent {
+  background: var(--color-accent-soft);
+  color: var(--color-accent-ink);
+}
+
+.rise {
+  animation: rise 0.5s ease both;
+}
+
+}
+/* end @layer components */
+
+/* ---- Motion ------------------------------------------------------------ */
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -65,12 +177,15 @@ body {
     scroll-behavior: auto;
   }
 
-  .floating-badge,
-  .animate-pulse {
+  .rise {
     animation: none;
   }
 
-  * {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 }

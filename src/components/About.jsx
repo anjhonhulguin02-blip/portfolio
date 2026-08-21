@@ -1,3 +1,5 @@
+import SectionHeading from './SectionHeading';
+
 const focusAreas = [
   {
     title: 'Full-Stack Development',
@@ -15,25 +17,47 @@ const focusAreas = [
 
 export default function About() {
   return (
-    <section id="about" className="py-16 scroll-mt-20">
-      <h2 className="font-display text-center text-3xl uppercase tracking-widest mb-8 text-white">
-        About <span className="text-purple-500">Me</span>
-      </h2>
+    <section id="about" className="scroll-mt-24 pt-16">
+      <SectionHeading eyebrow="About" title="A bit about me" />
 
-      <p className="text-slate-300 text-base max-w-2xl mx-auto leading-relaxed text-center mb-10">
-        I am a Bachelor of Science in Information Technology graduate focused on full-stack web development.
-        I enjoy turning practical problems into working web applications and continuously improving my skills
-        in frontend development, backend systems, databases, debugging, deployment, and modern software
-        development workflows.
-      </p>
+      <div className="mt-6 grid gap-4 lg:grid-cols-[1.3fr_1fr]">
+        <div className="card p-7 sm:p-10">
+          <p className="text-lg leading-relaxed text-ink sm:text-xl">
+            I am a Bachelor of Science in Information Technology graduate focused on
+            full-stack web development. I enjoy turning practical problems into working
+            web applications and continuously improving my skills in frontend development,
+            backend systems, databases, debugging, deployment, and modern software
+            development workflows.
+          </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-        {focusAreas.map((area) => (
-          <div key={area.title} className="glass-card p-5 rounded-2xl text-center">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-purple-400 mb-2">{area.title}</h3>
-            <p className="text-sm text-slate-300 leading-relaxed">{area.description}</p>
+          <div className="mt-8 flex flex-wrap gap-2.5 border-t border-line pt-6">
+            <a href="#contact" className="pill pill-primary">
+              Let&rsquo;s work together
+            </a>
+            <a
+              href="/Anjhon_Hulguin_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pill pill-ghost"
+            >
+              View resume
+            </a>
           </div>
-        ))}
+        </div>
+
+        <div className="grid gap-4">
+          {focusAreas.map((area, i) => (
+            <div key={area.title} className="card p-6">
+              <div className="flex items-baseline justify-between gap-3">
+                <h3 className="text-sm font-bold text-ink">{area.title}</h3>
+                <span className="display text-sm text-ink-faint">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+              </div>
+              <p className="mt-2.5 text-sm leading-relaxed text-ink-soft">{area.description}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

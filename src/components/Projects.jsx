@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { projects } from '../data/projects';
 import ProjectCard from './ProjectCard';
 import CaseStudyPanel from './CaseStudyPanel';
+import SectionHeading from './SectionHeading';
 
 function getColumnCount() {
   if (typeof window === 'undefined') return 1;
@@ -46,21 +47,20 @@ export default function Projects() {
   }
 
   return (
-    <section id="projects" className="py-16 scroll-mt-20">
-      <h2 className="font-display text-center text-3xl uppercase tracking-widest mb-4 text-white">
-        Featured <span className="text-purple-500">Projects</span>
-      </h2>
-      <p className="text-center text-slate-400 text-sm max-w-xl mx-auto mb-12">
-        Full-stack applications I've built, contributed to, and deployed end to end.
-      </p>
+    <section id="projects" className="scroll-mt-24 pt-4">
+      <SectionHeading
+        eyebrow="Portfolio"
+        title="Selected work"
+        description="Full-stack applications I've built, contributed to, and deployed end to end."
+      />
 
-      <div className="space-y-8">
+      <div className="mt-6 space-y-4">
         {rows.map((row, rowIndex) => {
           const rowHasOpenProject = row.some((project) => project.id === openProjectId);
           return (
-            <div key={rowIndex}>
+            <div key={rowIndex} className="space-y-4">
               <div
-                className="grid gap-8 items-stretch"
+                className="grid gap-4 items-stretch"
                 style={{ gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))` }}
               >
                 {row.map((project) => (
