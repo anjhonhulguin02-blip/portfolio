@@ -1,40 +1,54 @@
+import SectionHeading from './SectionHeading';
+
+const bullets = [
+  'Designed and developed full-stack web applications using modern frontend frameworks, backend technologies, and database systems.',
+  'Implemented authentication, authorization, database security, API integration, and responsive user interfaces.',
+  'Managed development workflows using Git, GitHub, and cloud deployment platforms.',
+  'Performed debugging, testing, and technical improvements throughout the development lifecycle.',
+];
+
 export default function Experience() {
   return (
-    <section id="experience" className="py-16 scroll-mt-20">
-      <h2 className="font-display text-center text-3xl uppercase tracking-widest mb-12 text-white">
-        Experience <span className="text-purple-500">&amp; Education</span>
-      </h2>
+    <section id="experience" className="scroll-mt-24 pt-16">
+      <SectionHeading eyebrow="Background" title="Experience & education" />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-        <div>
-          <h3 className="font-display text-lg tracking-wider mb-4 flex items-center gap-2 text-pink-500">
-            <span className="text-slate-400">#</span> Experience
-          </h3>
-          <div className="glass-card p-6 rounded-2xl">
-            <h4 className="font-bold text-lg text-white">Full-Stack Development</h4>
-            <p className="text-purple-500 text-sm font-semibold mb-2">Independent Projects</p>
-            <span className="inline-block bg-white/10 rounded-md px-2 py-1 text-xs text-slate-400 mb-3">2025 - Present</span>
-            <ul className="list-disc list-outside ml-4 text-sm text-slate-300 space-y-2 leading-relaxed">
-              <li>Designed and developed full-stack web applications using modern frontend frameworks, backend technologies, and database systems.</li>
-              <li>Implemented authentication, authorization, database security, API integration, and responsive user interfaces.</li>
-              <li>Managed development workflows using Git, GitHub, and cloud deployment platforms.</li>
-              <li>Performed debugging, testing, and technical improvements throughout the development lifecycle.</li>
-            </ul>
+      <div className="mt-6 grid gap-4 lg:grid-cols-[1.4fr_1fr]">
+        <div className="card p-7 sm:p-8">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <p className="eyebrow">Experience</p>
+            <span className="tag">2025 &ndash; Present</span>
           </div>
+
+          <h3 className="display mt-4 text-2xl text-ink">Full-Stack Development</h3>
+          <p className="mt-1 text-sm font-medium text-accent-ink">Independent Projects</p>
+
+          <ul className="mt-6 space-y-3">
+            {bullets.map((b) => (
+              <li key={b} className="flex gap-3 text-sm leading-relaxed text-ink-soft">
+                <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" aria-hidden="true" />
+                {b}
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <div>
-          <h3 className="font-display text-lg tracking-wider mb-4 flex items-center gap-2 text-purple-500">
-            <span className="text-slate-400">#</span> Education
-          </h3>
-          <div className="glass-card p-6 rounded-2xl">
-            <h4 className="font-bold text-lg text-white">Bachelor of Science in Information Technology</h4>
-            <p className="text-purple-500 text-sm font-semibold mb-2">Our Lady of Fatima University</p>
-            <span className="inline-block bg-white/10 rounded-md px-2 py-1 text-xs text-slate-400 mb-3">2020 - 2026</span>
-            <p className="text-sm text-slate-300 leading-relaxed">
-              Focused on core software engineering principles, UI technologies, and relational database management systems, building the foundation for full-stack web development.
-            </p>
+        <div className="card flex flex-col p-7 sm:p-8">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <p className="eyebrow">Education</p>
+            <span className="tag">2020 &ndash; 2026</span>
           </div>
+
+          <h3 className="display mt-4 text-2xl text-ink">
+            BS Information Technology
+          </h3>
+          <p className="mt-1 text-sm font-medium text-accent-ink">
+            Our Lady of Fatima University
+          </p>
+
+          <p className="mt-6 text-sm leading-relaxed text-ink-soft">
+            Focused on core software engineering principles, UI technologies, and relational
+            database management systems, building the foundation for full-stack web development.
+          </p>
         </div>
       </div>
     </section>

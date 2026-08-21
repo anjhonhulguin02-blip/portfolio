@@ -1,3 +1,5 @@
+import SectionHeading from './SectionHeading';
+
 const skillCategories = [
   {
     name: 'Frontend',
@@ -31,23 +33,25 @@ const skillCategories = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-16 scroll-mt-20">
-      <h2 className="font-display text-center text-3xl uppercase tracking-widest mb-12 text-white">
-        Technical <span className="text-purple-500">Skills</span>
-      </h2>
+    <section id="skills" className="scroll-mt-24 pt-16">
+      <SectionHeading
+        eyebrow="Capabilities"
+        title="Technical skills"
+        description="The tools and practices I use across the stack, from schema design to deployment."
+      />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {skillCategories.map((category) => (
-          <div key={category.name} className="glass-card p-5 rounded-2xl">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-pink-500 mb-4">
-              {category.name}
-            </h3>
-            <div className="flex flex-wrap gap-2">
+      <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {skillCategories.map((category, i) => (
+          <div key={category.name} className="card flex flex-col p-6">
+            <div className="flex items-baseline justify-between gap-3">
+              <h3 className="text-base font-bold text-ink">{category.name}</h3>
+              <span className="display text-sm text-ink-faint">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+            </div>
+            <div className="mt-5 flex flex-wrap gap-2">
               {category.skills.map((skill) => (
-                <span
-                  key={skill}
-                  className="text-xs font-medium bg-white/5 border border-white/10 text-slate-200 px-3 py-1.5 rounded-lg"
-                >
+                <span key={skill} className="tag">
                   {skill}
                 </span>
               ))}

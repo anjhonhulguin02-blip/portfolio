@@ -1,46 +1,47 @@
+import SectionHeading from './SectionHeading';
+
 const steps = [
-  'Requirements',
-  'System Design',
-  'Implementation',
-  'AI-Assisted Development',
-  'Code Review & Validation',
-  'Testing & Debugging',
-  'Git & Version Control',
-  'Deployment',
+  { name: 'Requirements', detail: 'Clarify the problem, users, and scope before writing code.' },
+  { name: 'System Design', detail: 'Model the data, choose the stack, and plan the architecture.' },
+  { name: 'Implementation', detail: 'Build the frontend, API layer, and database together.' },
+  { name: 'Code Review & Validation', detail: 'Read back every change and verify it does what I intended.' },
+  { name: 'Testing & Debugging', detail: 'Exercise real flows, then trace and fix what breaks.' },
+  { name: 'Git & Version Control', detail: 'Commit in reviewable steps with clear history.' },
+  { name: 'Deployment', detail: 'Ship to Vercel or Railway, then verify the live build.' },
 ];
 
 export default function Workflow() {
   return (
-    <section id="workflow" className="py-16 scroll-mt-20">
-      <h2 className="font-display text-center text-3xl uppercase tracking-widest mb-4 text-white">
-        How I <span className="text-purple-500">Build</span>
-      </h2>
-      <p className="text-center text-slate-400 text-sm max-w-xl mx-auto mb-12">
-        My day-to-day development process, from requirements to a deployed app.
-      </p>
+    <section id="workflow" className="scroll-mt-24 pt-16">
+      <SectionHeading
+        eyebrow="Process"
+        title="How I build"
+        description="My day-to-day development process, from requirements to a deployed app."
+      />
 
-      <div className="glass-card rounded-2xl p-6 md:p-8">
-        <ol className="flex flex-col md:flex-row md:flex-wrap md:justify-center gap-3">
+      <div className="mt-6 grid gap-4 lg:grid-cols-[2fr_1fr]">
+        <div className="grid gap-4 sm:grid-cols-2">
           {steps.map((step, i) => (
-            <li key={step} className="flex items-center gap-3">
-              <div className="flex items-center gap-3 bg-white/5 border border-white/10 rounded-xl px-4 py-3">
-                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-purple-500/20 text-purple-300 text-xs font-bold shrink-0">
-                  {i + 1}
-                </span>
-                <span className="text-sm font-medium text-slate-200 whitespace-nowrap">{step}</span>
-              </div>
-              {i < steps.length - 1 && (
-                <span className="text-slate-600 hidden md:inline" aria-hidden="true">&rarr;</span>
-              )}
-            </li>
+            <div key={step.name} className="card p-6">
+              <span className="display text-2xl text-accent-ink">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <h3 className="mt-4 text-base font-bold text-ink">{step.name}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-soft">{step.detail}</p>
+            </div>
           ))}
-        </ol>
+        </div>
 
-        <p className="text-sm text-slate-300 leading-relaxed max-w-3xl mx-auto text-center mt-8 pt-8 border-t border-white/5">
-          I use AI-assisted development tools such as ChatGPT and Claude to accelerate architecture exploration,
-          implementation, debugging, refactoring, and technical review — while maintaining responsibility for
-          requirements, technical decisions, code validation, testing, integration, and deployment.
-        </p>
+        <div className="card-accent flex flex-col justify-center p-7 sm:p-9">
+          <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.12em] text-white/90">
+            On AI tooling
+          </p>
+          <p className="mt-4 text-[0.95rem] leading-relaxed text-white/95">
+            I use AI-assisted tools such as ChatGPT and Claude to move faster through
+            architecture exploration and debugging — while keeping ownership of
+            requirements, technical decisions, validation, testing, and deployment.
+          </p>
+        </div>
       </div>
     </section>
   );
