@@ -128,49 +128,55 @@ export const projects = [
   {
     id: "scholarship",
     title: "Scholarship Distribution System",
-    subtitle: "Scholarship Application & Fund Distribution System",
+    subtitle: "Deployment & Environment Work — Capstone Project",
     image: scholarshipPreview,
     status: "Academic Demo",
     description:
-      "A Laravel-based full-stack application, built as a university capstone project, for managing student scholarship applications, organization review workflows, and fund disbursement tracking.",
-    stack: ["Laravel", "PHP", "MySQL", "Composer", "NPM"],
-    githubUrl: "https://github.com/MakMoinee/scholarshipDistributionWebApp",
+      "A Laravel scholarship management system from our university capstone. I handled the environment engineering and took it from a codebase that only ran locally to a live, publicly reachable deployment.",
+    stack: ["Laravel", "PHP", "MySQL", "Railway", "Composer"],
+    githubUrl: "https://github.com/anjhonhulguin02-blip/Scholarship-Distribution-System",
     liveUrl: "https://scholarship-app-production.up.railway.app",
     caseStudy: {
       overview:
-        "A two-role Laravel application where students apply for scholarships and organizations review applications, approve them, and track fund disbursement — including an experimental Ethereum-based transaction ledger for recording disbursements. Built collaboratively as a university capstone project.",
+        "A two-role Laravel application where students apply for scholarships and organizations review applications, approve them, and track fund disbursement. This was our university capstone submission. I am including it for the deployment and environment engineering I did on it — see 'My role' for exactly what was mine.",
       problem:
-        "Scholarship applications and fund releases are often tracked manually, making it hard for either students or the awarding organization to see application status or disbursement history in one place.",
+        "The codebase would only run on one machine. Before it could be demonstrated — let alone hosted anywhere — it had to be reproducible from a fresh checkout, and then survive a real build on a real server.",
       solution:
-        "Our team built a Laravel app with separate student and organization portals: students submit applications with required document uploads, organizations review and approve them, and approved awards are tracked through a transaction/disbursement module.",
+        "I made it actually runnable: resolved the PHP extension and dependency requirements, got it running reliably in local development, then deployed it to Railway with a managed MySQL database so it could be reached from a public URL.",
       role:
-        "Collaborative capstone project (university group project, not solo). My specific contribution: local environment configuration (PHP/php.ini extensions), Composer/NPM dependency management, local deployment/testing setup, and the production deployment to Railway with a managed MySQL database. Application features and modules (student/org portals, review workflow, disbursement logic) were built together with my capstone groupmates.",
-      techStack: ["Laravel 10", "PHP", "MySQL", "Composer", "NPM"],
+        "Deployment and environment engineering (not application development). What I did: diagnosed and enabled the required PHP extensions (zip, gd, exif, pdo_mysql), managed Composer and NPM dependencies, configured local file storage and server startup, and handled the production deployment to Railway — provisioning MySQL, importing the schema, wiring environment variables, and debugging the build failures that surfaced along the way.",
+      techStack: ["Laravel 10", "PHP 8.2", "MySQL", "Railway", "Composer", "NPM"],
       architecture: [
         "Student / Organization Browser",
-        "Laravel (Blade + Controllers)",
-        "MySQL Database",
+        "Laravel on Railway",
+        "Managed MySQL (Railway)",
       ],
       features: [
-        "Student application flow with required-document upload, duplicate-application prevention, and slot-availability checks",
-        "Organization review workflow to approve/reject applications and view full applicant details",
-        "Notification system for both students and organizations on application and disbursement events",
-        "A transaction/disbursement module that records fund releases against an internal balance, including an Ethereum-based ledger (on-chain transaction hash recording with a live ETH-to-PHP conversion rate)",
-        "Local environment tooling: a startup script (start_service.bat) that launches the Laravel dev server on a fixed port",
+        "What the system does: students apply for scholarships with required document uploads, with duplicate-application prevention and slot-availability checks",
+        "Organizations review applications, approve or reject them, and view full applicant details",
+        "Notifications for both students and organizations on application and disbursement events",
+        "A transaction/disbursement module that records fund releases against an internal balance, including an Ethereum-based ledger",
+        "Note: the application features above are not my code — see 'My role' for my contribution",
       ],
       challenges: [
         {
           problem:
-            "Local setup required specific PHP extensions (exif, gd2, pdo_mysql) to be enabled before the app would run, which isn't obvious from a fresh PHP install.",
+            "The delivered codebase would not install at all: Composer failed because the PHP build was missing the zip extension, and later the app refused to boot without gd, exif, and pdo_mysql — none of which is obvious from the error messages alone.",
           solution:
-            "Documented and configured the required php.ini extensions and Composer/NPM dependency setup so the environment could be reproduced reliably, and wrapped server startup in a single script to remove repetitive manual steps.",
+            "Traced each failure back to the specific missing extension, enabled them in php.ini, and re-ran the dependency install until the project bootstrapped cleanly from a fresh checkout.",
+        },
+        {
+          problem:
+            "The first Railway deployment failed during the build. Laravel threw 'Invalid URI' while discovering packages, because APP_URL had been pointed at a Railway domain variable that is not yet resolved at build time.",
+          solution:
+            "Read the build log back to the failing artisan step, set APP_URL to a valid value so the build could complete, then generated the public domain and set the real URL for runtime. Also caught a credentials mismatch — the app's .env expected a MySQL password the local server did not have — and corrected it before importing the schema.",
         },
       ],
       learned:
-        "Working through PHP environment configuration by hand (extensions, local storage linking, server startup) gave me a much clearer picture of what a framework's tooling normally hides.",
+        "Taking someone else's codebase from 'works on their machine' to a public URL taught me more about deployment than writing the app would have: reading build logs to find the actual failing step, recognising that missing PHP extensions surface as unrelated-looking errors, and understanding which environment variables must resolve at build time versus runtime.",
       future: [
-        "Move authentication onto Laravel's built-in Auth facade instead of a custom session implementation",
-        "Add automated tests around the application and disbursement workflows",
+        "Add a documented .env.example and setup script so the environment is reproducible without manual trial and error",
+        "Move authentication onto Laravel's built-in Auth facade instead of the custom session implementation",
       ],
     },
   },
